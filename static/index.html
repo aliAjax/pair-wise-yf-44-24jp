@@ -19,10 +19,11 @@
   <pre id="result">等待操作</pre>
   <h2>常用接口</h2>
   <pre>GET  /health
-GET  /api/&lt;kind&gt;
-POST /api/&lt;kind&gt;
+GET  /api/&lt;kind&gt;                         # corridor | unit | change | action_item
+POST /api/&lt;kind&gt;                         # 支持 Idempotency-Key
 GET  /api/entities/&lt;id&gt;
-POST /api/entities/&lt;id&gt;/actions</pre>
+POST /api/entities/&lt;id&gt;/actions         # 支持 Idempotency-Key；余量不足返回 queued
+GET  /api/corridors/&lt;id&gt;/occupancy       # capacity / used / available / active / waiting</pre>
 </main>
 <script>
 async function checkHealth() {
